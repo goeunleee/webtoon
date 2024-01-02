@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screen/models/webtoon_model.dart';
+import 'package:flutter_application_1/models/webtoon_model.dart';
 import 'package:flutter_application_1/services/api_services.dart';
+import 'package:flutter_application_1/widget/webtoon_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -14,10 +15,12 @@ class HomeScreen extends StatelessWidget {
         elevation: 2,
         backgroundColor: Colors.white,
         foregroundColor: Colors.green,
-        title: const Text(
-          "오늘의 웹툰",
-          style: TextStyle(
-            fontSize: 24,
+        title: const Center(
+          child: Text(
+            "오늘의 웹툰",
+            style: TextStyle(
+              fontSize: 24,
+            ),
           ),
         ),
       ),
@@ -49,35 +52,8 @@ class HomeScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       itemBuilder: (context, index) {
         var webtoon = snapshot.data![index];
-        return Column(
-          children: [
-            Container(
-              width: 250,
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 15,
-                    offset: const Offset(10, 12),
-                    color: Colors.black.withOpacity(0.5),
-                  )
-                ],
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Image.network(webtoon.thumb),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              webtoon.title,
-              style: const TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
-        );
+        return Webtoon(
+            title: webtoon.title, thumb: webtoon.thumb, id: webtoon.id);
       },
       separatorBuilder: (context, index) => const SizedBox(
         width: 40,

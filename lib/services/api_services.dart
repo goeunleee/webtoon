@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_application_1/screen/models/webtoon_model.dart';
+import 'package:flutter_application_1/models/webtoon_model.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
