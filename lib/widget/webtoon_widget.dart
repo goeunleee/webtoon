@@ -23,22 +23,26 @@ class Webtoon extends StatelessWidget {
           ),
         ),
       },
+      //포스터와 제목
       child: Column(
         children: [
-          Container(
-            width: 250,
-            clipBehavior: Clip.hardEdge,
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 15,
-                  offset: const Offset(10, 12),
-                  color: Colors.black.withOpacity(0.5),
-                )
-              ],
-              borderRadius: BorderRadius.circular(15),
+          Hero(
+            tag: id,
+            child: Container(
+              width: 250,
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 15,
+                    offset: const Offset(10, 12),
+                    color: Colors.black.withOpacity(0.5),
+                  )
+                ],
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Image.network(thumb),
             ),
-            child: Image.network(thumb),
           ),
           const SizedBox(
             height: 10,
